@@ -1,11 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import {RecoilRoot} from 'recoil';
+import Router from './Router';
 
 const App = () => {
   return (
-    <View>
-      
-    </View>
+    <RecoilRoot>
+      <Router/>
+    </RecoilRoot>
   );
 };
 
