@@ -31,9 +31,10 @@ const ProductItem = (props: ProductItem) => {
 
 const styles = StyleSheet.create({
   itemContainer: {
-    paddingTop: 30,
+    paddingTop: 20,
     height: 120,
     marginBottom: 50,
+
   },
   productInfoContainer: {
     backgroundColor: Colors.Secondary,
@@ -41,11 +42,12 @@ const styles = StyleSheet.create({
     width: 147,
     height: 121,
     justifyContent: 'center',
+    elevation: 3,
   },
   imageContainer: {
-    backgroundColor: Colors.Grey,
-    width: 60,
-    height: 60,
+    backgroundColor: '#D9D9D9',
+    width: 50,
+    height: 50,
     borderRadius: 50,
     position: 'absolute',
     top: 0,
@@ -53,8 +55,8 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
   image: {
-    height: 20,
-    width: 20,
+    height: 15,
+    width: 15,
     zIndex: 200,
   },
   buttonContainer: {
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     position: 'absolute',
     zIndex: 100,
-    top: 37,
+    top: 27,
     right: 7,
   },
   headerDetails: {
