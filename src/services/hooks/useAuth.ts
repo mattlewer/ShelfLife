@@ -49,6 +49,21 @@ const useAuth = () => {
     }
   };
 
+  const isLoggedIn = async (): Promise<boolean> => {
+    let currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      const user_id = currentUser?.uid;
+      const token = await currentUser?.getIdToken();
+      setAuthState({
+        user_id: user_id,
+        token_id: token,
+      });
+      return true;
+    }else{
+      return false;
+    }
+  };
+
   const signOut = async () => {
     await firebase.auth().signOut();
     setAuthState(null)
@@ -57,6 +72,7 @@ const useAuth = () => {
   return {
     createUser,
     signInUser,
+    isLoggedIn,
     signOut,
     error,
     setError,
