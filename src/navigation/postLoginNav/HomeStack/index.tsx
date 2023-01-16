@@ -20,7 +20,7 @@ const HomeNavigator = () => {
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
       <HomeStack.Screen
-        options={{headerShown: true}}
+        options={{headerShown: false}}
         name="HomeScreen"
         component={HomeScreen}
       />
