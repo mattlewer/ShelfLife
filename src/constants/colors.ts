@@ -1,0 +1,5 @@
+export const Text = '#3b3b3b'
+export const White = '#FFF'
+export const Primary = '#32906c'
+export const Secondary = '#fff2d8'
+export const Tertiary = '#ee6c52'

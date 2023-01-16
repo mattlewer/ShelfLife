@@ -27,10 +27,12 @@ const LandingPage = () => {
       </View>
       <View>
         <TextButton
+          type={'Primary'}
           title={localise('SIGN_IN')}
           onPress={viewModel.onSignIn}
         />
         <TextButton
+          type={'Secondary'}
           title={localise('CREATE_ACCOUNT')}
           onPress={viewModel.onSignUp}
         />
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
   landingPageContainer: {
     flex: 1,
     padding: 10,
-    justifyContent: 'space-evenly'
+    backgroundColor: '#FFF',
+    justifyContent: 'space-evenly',
   },
 });
 
