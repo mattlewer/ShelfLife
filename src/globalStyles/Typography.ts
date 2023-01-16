@@ -14,6 +14,7 @@ export const Typography = StyleSheet.create({
     BodyFont:{
         fontSize: 14,
         color: Colors.Text,
+        fontWeight: '400',
     },
     ListDateHeader:{
         fontSize: 14,
