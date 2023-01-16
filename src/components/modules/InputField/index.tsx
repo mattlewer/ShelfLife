@@ -3,7 +3,7 @@ import {TextInput, StyleSheet, Text} from 'react-native';
 import * as Colors from '../../../constants/colors';
 
 interface InputFieldProps {
-  label: string;
+  label?: string;
   value: string | undefined;
   onChange: (e:string) => void;
 }

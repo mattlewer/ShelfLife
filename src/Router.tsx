@@ -4,6 +4,7 @@ import {useRecoilValue} from 'recoil';
 import {NavigationContainer} from '@react-navigation/native';
 import {sessionState} from './state/auth';
 import PreLoginNavigation from './navigation/preLoginNav';
+import HomeScreen from './components/screens/postLogin/HomeScreen';
 
 const Router = () => {
   const session = useRecoilValue(sessionState);
@@ -11,9 +12,7 @@ const Router = () => {
   return (
     <NavigationContainer>
       {session?.token_id ? (
-          <View>
-              <Text>Logged In</Text>
-          </View>
+          <HomeScreen/>
       ) : (
         <PreLoginNavigation />
       )}
