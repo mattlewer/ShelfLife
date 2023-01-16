@@ -4,6 +4,7 @@ import {ProductResponse} from '../../../interfaces/Product';
 import {Typography} from '../../../globalStyles/Typography';
 import ProductItem from '../ProductItem';
 import {epochToDateString} from '../../../services/helpers/epochToDateString';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface ProductListProps {
   products: ProductResponse[];
@@ -27,7 +28,12 @@ const ProductList = (props: ProductListProps) => {
           </View>
           <View style={styles.productContainer}>
             {item.items.map(product => {
-              return <ProductItem useBy={item.useBy} product={product} />;
+              return (
+                <>
+                  <ProductItem useBy={item.useBy} product={product} />
+                  {item.items.length === 1 ? <View style={{width: 147}}/> : null}
+                </>
+              );
             })}
           </View>
         </>

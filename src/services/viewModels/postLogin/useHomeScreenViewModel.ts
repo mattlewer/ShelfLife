@@ -27,9 +27,9 @@ const useHomeScreenViewModel = () => {
       useBy: 1673905293,
       items: [
         {id: 1, name: 'Apples', price: 2.50},
-        {id: 2, name: 'Oranges', price: 2},
-        {id: 3, name: 'Bread', price: 1},
-        {id: 4, name: 'Lasagne', price: 3},
+        // {id: 2, name: 'Oranges', price: 2},
+        // {id: 3, name: 'Bread', price: 1},
+        // {id: 4, name: 'Lasagne', price: 3},
       ],
     },
     {
