@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import * as Colors from '../constants/colors';
 
-const Typography = StyleSheet.create({
+export const Typography = StyleSheet.create({
     HeaderFont:{
         fontSize: 36,
         color: Colors.Text
