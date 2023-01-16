@@ -19,6 +19,7 @@ export const Typography = StyleSheet.create({
     ListDateHeader:{
         fontSize: 14,
         color: Colors.Grey,
+        fontWeight: '400',
     },
     Error:{
         fontSize: 14,

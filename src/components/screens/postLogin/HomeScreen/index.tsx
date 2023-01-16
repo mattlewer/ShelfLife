@@ -1,14 +1,15 @@
 import React from 'react';
 import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Typography} from '../../../../globalStyles/Typography';
 import InputField from '../../../modules/InputField';
 import * as Colors from '../../../../constants/colors';
-
-import CategoryItem from '../../../modules/CategoryItem';
+import ProductList from '../../../modules/ProductList';
+import CategoryList from '../../../modules/CategoryList';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
+
   return (
     <View style={styles.pageContainer}>
       <View style={styles.headerContainer}>
@@ -18,23 +19,13 @@ const HomeScreen = () => {
       </View>
       <View style={styles.contentContainer}>
         <Text style={Typography.SubHeaderFont}>Categories</Text>
-        <FlatList
-          style={styles.flatList}
-          ItemSeparatorComponent={() => <View style={{padding: 10}} />}
-          ListHeaderComponent={() => <View style={{padding: 5}} />}
-          ListFooterComponent={() => <View style={{padding: 5}} />}
-          horizontal
-          data={viewModel.categories}
-          renderItem={({item}) => (
-            <CategoryItem
-              category={item}
-              isSelected={viewModel.selectedCategory?.name === item.name}
-              onSelect={viewModel.setSelectedCategory}
-            />
-          )}
-          keyExtractor={item => item.name}
+        <CategoryList
+          categories={viewModel.categories}
+          setSelectedCategory={viewModel.onSelectCategory}
+          selectedCategory={viewModel.selectedCategory}
         />
         <Text style={Typography.SubHeaderFont}>Products</Text>
+        <ProductList products={viewModel.products} />
       </View>
     </View>
   );
@@ -50,11 +41,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   contentContainer: {
+    flex: 1,
     alignItems: 'center',
-  },
-  flatList: {
-    height: 100,
-    marginBottom: 40,
   },
 });
 export default HomeScreen;

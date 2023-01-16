@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import * as Colors from '../../../constants/colors';
 import {Typography} from '../../../globalStyles/Typography';
-import {Category} from '../../../interfaces/category';
+import {Category} from '../../../interfaces/Category';
 
 interface CategoryItemProps {
   category: Category;
