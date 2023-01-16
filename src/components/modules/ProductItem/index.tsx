@@ -1,9 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
 import {Product} from '../../../interfaces/Product';
-import * as Colors from '../../../constants/colors';
 import {Typography} from '../../../globalStyles/Typography';
+import * as Colors from '../../../constants/colors';
+import * as Dimens from '../../../constants/dimens';
 import Continue from '../../../assets/continue.png';
+import { epochToDateString } from '../../../services/helpers/epochToDateString';
 
 interface ProductItem {
   useBy: number;
@@ -18,11 +20,11 @@ const ProductItem = (props: ProductItem) => {
       </Pressable>
       <View style={styles.productInfoContainer}>
         <View style={styles.headerDetails}>
-          <Text style={Typography.SubHeaderFont}>Apples</Text>
+          <Text style={Typography.SubHeaderFont}>{props.product.name}</Text>
           <Text style={Typography.BodyFont}>£{props.product.price}</Text>
         </View>
         <View style={styles.dateContainer}>
-          <Text style={Typography.Error}>{props.useBy.toLocaleString()}</Text>
+          <Text style={Typography.Error}>{epochToDateString(props.useBy)}</Text>
         </View>
       </View>
     </View>
@@ -39,8 +41,8 @@ const styles = StyleSheet.create({
   productInfoContainer: {
     backgroundColor: Colors.Secondary,
     borderRadius: 20,
-    width: 147,
-    height: 121,
+    width: Dimens.PRODUCT_ITEM_WIDTH,
+    height: Dimens.PRODUCT_ITEM_HEIGHT,
     justifyContent: 'center',
     elevation: 3,
   },

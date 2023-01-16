@@ -5,4 +5,7 @@
     "PASSWORD": "Password",
     "SIGN_IN": "Sign in",
     "CREATE_ACCOUNT": "Create account",
+
+    "TODAY": " - Today",
+    "TOMORROW": " - Tomorrow"
 }

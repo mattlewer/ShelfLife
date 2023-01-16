@@ -4,7 +4,8 @@ import {ProductResponse} from '../../../interfaces/Product';
 import {Typography} from '../../../globalStyles/Typography';
 import ProductItem from '../ProductItem';
 import {epochToDateString} from '../../../services/helpers/epochToDateString';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import * as Dimens from '../../../constants/dimens';
+import {localise} from '../../../services/lang/lang';
 
 interface ProductListProps {
   products: ProductResponse[];
@@ -20,10 +21,10 @@ const ProductList = (props: ProductListProps) => {
             <Text style={Typography.ListDateHeader}>
               {epochToDateString(item.useBy)}
               {epochToDateString(item.useBy) ===
-                epochToDateString(Date.now() / 1000) && ' - Today'}
+                epochToDateString(Date.now() / 1000) && localise('TODAY')}
               {epochToDateString(item.useBy) ===
                 epochToDateString((Date.now() + 86400000) / 1000) &&
-                ' - Tomorrow'}
+                localise('TOMORROW')}
             </Text>
           </View>
           <View style={styles.productContainer}>
@@ -31,7 +32,9 @@ const ProductList = (props: ProductListProps) => {
               return (
                 <>
                   <ProductItem useBy={item.useBy} product={product} />
-                  {item.items.length === 1 ? <View style={{width: 147}}/> : null}
+                  {item.items.length === 1 ? (
+                    <View style={{width: Dimens.PRODUCT_ITEM_WIDTH}} />
+                  ) : null}
                 </>
               );
             })}
