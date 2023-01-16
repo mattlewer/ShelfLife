@@ -1,5 +1,6 @@
 import React from 'react';
 import {TextInput, StyleSheet, Text} from 'react-native';
+import * as Colors from '../../../constants/colors';
 
 interface InputFieldProps {
   label: string;
@@ -22,8 +23,8 @@ const InputField = (props: InputFieldProps) => {
 
 const styles = StyleSheet.create({
   inputField: {
-    borderWidth: 1,
-    borderRadius: 6,
+    backgroundColor: Colors.Secondary, 
+    borderRadius: 12,
     paddingHorizontal: 5,
     marginBottom: 10,
   },
