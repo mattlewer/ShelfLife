@@ -10,7 +10,7 @@ const LandingPage = () => {
   const viewModel = useLandingScreenViewModel();
   return (
     <View style={styles.landingPageContainer}>
-      <View>
+      <View style={styles.textFieldContainer}>
         <InputField
           label={localise('EMAIL')}
           value={viewModel.email}
@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     justifyContent: 'space-evenly',
   },
+  textFieldContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 export default LandingPage;

@@ -6,9 +6,13 @@
     "SIGN_IN": "Sign in",
     "CREATE_ACCOUNT": "Create account",
 
+    "CURRENT_ITEMS": "Current items",
+    "ITEMS_DISCARDED": "Items discarded",
+    "MONEY_WASTED": "Money wasted",
+    
     "STATISTICS": "Statistics",
-    "USE_TODAY": "Use Today",
-    "USE_TOMORROW": "Use Tomorrow"
+    "USE_TODAY": "Expires Today",
+    "USE_TOMORROW": "Expires Tomorrow"
 
 
 }

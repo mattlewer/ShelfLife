@@ -9,7 +9,7 @@ import Juice from '../../../assets/juice.png';
 import Baked from '../../../assets/baked.png';
 import Snacks from '../../../assets/snacks.png';
 
-const useAllProductsViewModel = () => {
+const useAllItemsViewModel = () => {
 
     const [selectedCategory, setSelectedCategory] = useState<undefined | Category>();
 
@@ -59,4 +59,4 @@ const useAllProductsViewModel = () => {
     }
 }
 
-export default useAllProductsViewModel
+export default useAllItemsViewModel
