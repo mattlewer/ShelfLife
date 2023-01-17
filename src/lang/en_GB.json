@@ -6,6 +6,9 @@
     "SIGN_IN": "Sign in",
     "CREATE_ACCOUNT": "Create account",
 
-    "TODAY": " - Today",
-    "TOMORROW": " - Tomorrow"
+    "STATISTICS": "Statistics",
+    "USE_TODAY": "Use Today",
+    "USE_TOMORROW": "Use Tomorrow"
+
+
 }
