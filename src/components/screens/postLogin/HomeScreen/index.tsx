@@ -6,6 +6,7 @@ import InputField from '../../../modules/InputField';
 import * as Colors from '../../../../constants/colors';
 import ProductList from '../../../modules/ProductList';
 import CategoryList from '../../../modules/CategoryList';
+import Search from '../../../../assets/search.png'
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
@@ -15,7 +16,7 @@ const HomeScreen = () => {
       <View style={styles.headerContainer}>
         <Text style={Typography.HeaderFont}>Hi, Matt!</Text>
         <Text style={Typography.BodyFont}>You have x items expiring today</Text>
-        <InputField value={''} onChange={() => {}} />
+        <InputField value={''} onChange={() => {}} rightIcon={Search} />
       </View>
       <View style={styles.contentContainer}>
         <Text style={Typography.SubHeaderFont}>Categories</Text>
