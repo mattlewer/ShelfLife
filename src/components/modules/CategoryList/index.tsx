@@ -31,7 +31,7 @@ const CategoryList = (props: CategoryListProps) => {
 
 const styles = StyleSheet.create({
   flatList: {
-    height: 180,
+    height: 140,
   },
 });
 

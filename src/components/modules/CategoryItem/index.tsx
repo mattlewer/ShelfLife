@@ -12,19 +12,19 @@ interface CategoryItemProps {
 const CategoryItem = (props: CategoryItemProps) => {
   return (
     <Pressable
-      style={[styles.Container, {marginBottom: props.isSelected ? 20 : 0}]}
+      style={[styles.container, {marginBottom: props.isSelected ? 20 : 0}]}
       onPress={() => props.onSelect(props.category)}>
-      <View style={styles.Container}>
+      <View style={styles.container}>
         <View
           style={[
-            styles.IconContainer,
+            styles.iconContainer,
             {
               backgroundColor: props.isSelected
                 ? Colors.Primary
                 : Colors.Secondary,
             },
           ]}>
-          {/* <Image source={{uri: props.category.uri}} /> */}
+          <Image style={styles.categoryIcon} source={props.category.uri}/>
         </View>
         <Text style={Typography.BodyFont}>{props.category.name}</Text>
       </View>
@@ -33,16 +33,23 @@ const CategoryItem = (props: CategoryItemProps) => {
 };
 
 const styles = StyleSheet.create({
-  Container: {
+  container: {
+    position: 'relative',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  IconContainer: {
+  iconContainer: {
     height: 48,
     width: 58,
     borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  categoryIcon: {
+    width:30,
+    height:30,
+  }
 });
 
 export default CategoryItem;

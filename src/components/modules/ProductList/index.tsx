@@ -30,14 +30,12 @@ const ProductList = (props: ProductListProps) => {
           <View style={styles.productContainer}>
             {item.items.map(product => {
               return (
-                <>
                   <ProductItem useBy={item.useBy} product={product} />
-                  {item.items.length === 1 ? (
-                    <View style={{width: Dimens.PRODUCT_ITEM_WIDTH}} />
-                  ) : null}
-                </>
               );
             })}
+            {item.items.length % 2 !== 0 ? (
+              <View style={{width: Dimens.PRODUCT_ITEM_WIDTH}} />
+            ) : null}
           </View>
         </>
       )}></FlatList>
