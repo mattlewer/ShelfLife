@@ -6,7 +6,7 @@ import * as Colors from '../../../../constants/colors';
 import HomeStats from '../../../modules/HomeStats';
 import ProductListRow from '../../../modules/ProductListRow';
 import {ScrollView} from 'react-native-gesture-handler';
-import { localise } from '../../../../services/lang/lang';
+import {localise} from '../../../../services/lang/lang';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
@@ -28,7 +28,7 @@ const HomeScreen = () => {
             moneyWasted={viewModel.moneyWasted}
           />
         </View>
-        <View>
+        <View style={{backgroundColor: '#FFE0E0', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingTop: 10}}>
           <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
             {localise('USE_TODAY')}
           </Text>
@@ -37,7 +37,7 @@ const HomeScreen = () => {
             useBy={viewModel.products[0].useBy}
           />
         </View>
-        <View>
+        <View style={{backgroundColor: '#FFE3B9', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingTop: 10, marginTop: 10}}>
           <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
             {localise('USE_TOMORROW')}
           </Text>
@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
   },
   sectionHeaderList: {
     paddingHorizontal: 20,
-  }
+  },
 });
 export default HomeScreen;

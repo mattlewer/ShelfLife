@@ -1,5 +1,6 @@
 import React from 'react';
 import {TextInput, StyleSheet, Text, View, Image} from 'react-native';
+import {Typography} from '../../../globalStyles/Typography';
 import * as Colors from '../../../constants/colors';
 
 interface InputFieldProps {
@@ -11,10 +12,10 @@ interface InputFieldProps {
 
 const InputField = (props: InputFieldProps) => {
   return (
-    <View>
-      <Text>{props.label}</Text>
+    <View style={styles.inputFieldContainer}>
+      <Text style={Typography.BodyFont}>{props.label}</Text>
       <TextInput
-        style={styles.inputField}
+        style={[styles.inputField, Typography.BodyFont]}
         value={props.value}
         onChangeText={props.onChange}
       />
@@ -26,6 +27,7 @@ const InputField = (props: InputFieldProps) => {
 const styles = StyleSheet.create({
   inputFieldContainer: {
     position: 'relative',
+    width: '90%',
   },
   inputField: {
     backgroundColor: Colors.Secondary, 

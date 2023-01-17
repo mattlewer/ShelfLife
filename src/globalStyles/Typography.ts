@@ -32,7 +32,7 @@ export const Typography = StyleSheet.create({
         fontWeight: '700',
     },
     StatHeaderFont: {
-        fontSize: 36,
+        fontSize: 30,
         color: Colors.Text,
         fontWeight: '700',
     }

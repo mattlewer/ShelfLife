@@ -1,28 +1,33 @@
 import React from 'react';
 import {View} from 'react-native';
 import HomeStatCard from '../HomeStatCard';
+import {localise} from '../../../services/lang/lang';
 
 interface HomeStatsProps {
-    currentItems: number;
-    discardedItems: number;
-    moneyWasted: number
+  currentItems: number;
+  discardedItems: number;
+  moneyWasted: number;
 }
 const HomeStats = (props: HomeStatsProps) => {
   return (
     <View style={{flexDirection: 'row'}}>
-      <View style={{height: 160, flex: 1}}>
+      <View style={{height: 150, flex: 1}}>
         <HomeStatCard
-          title={'Current items'}
+          title={localise('CURRENT_ITEMS')}
           content={props.currentItems.toString()}
           type={'positive'}
         />
         <HomeStatCard
-          title={'Items discarded'}
+          title={localise('ITEMS_DISCARDED')}
           content={props.discardedItems.toString()}
           type={'negative'}
         />
       </View>
-      <HomeStatCard title={'Money wasted'} content={'£' + props.moneyWasted.toString()} type={'data'} />
+      <HomeStatCard
+        title={localise('MONEY_WASTED')}
+        content={'£' + props.moneyWasted.toString()}
+        type={'data'}
+      />
     </View>
   );
 };
