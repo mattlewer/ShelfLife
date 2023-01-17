@@ -28,7 +28,8 @@ const HomeScreen = () => {
             moneyWasted={viewModel.moneyWasted}
           />
         </View>
-        <View style={{backgroundColor: '#FFE0E0', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingTop: 10}}>
+        <View
+          style={styles.listContainerToday}>
           <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
             {localise('USE_TODAY')}
           </Text>
@@ -37,7 +38,8 @@ const HomeScreen = () => {
             useBy={viewModel.products[0].useBy}
           />
         </View>
-        <View style={{backgroundColor: '#FFE3B9', borderTopLeftRadius: 20, borderBottomLeftRadius: 20, paddingTop: 10, marginTop: 10}}>
+        <View
+          style={styles.listContainerTomorrow}>
           <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
             {localise('USE_TOMORROW')}
           </Text>
@@ -63,6 +65,19 @@ const styles = StyleSheet.create({
   statContainer: {
     marginBottom: 30,
     paddingHorizontal: 20,
+  },
+  listContainerToday: {
+    backgroundColor: '#FFE0E0',
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    paddingTop: 10,
+  },
+  listContainerTomorrow: {
+    backgroundColor: '#FFE3B9',
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    paddingTop: 10,
+    marginTop: 10,
   },
   sectionHeaderList: {
     paddingHorizontal: 20,
