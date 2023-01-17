@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import HomeStatCard from '../HomeStatCard';
 import {localise} from '../../../services/lang/lang';
 
@@ -10,8 +10,8 @@ interface HomeStatsProps {
 }
 const HomeStats = (props: HomeStatsProps) => {
   return (
-    <View style={{flexDirection: 'row'}}>
-      <View style={{height: 150, flex: 1}}>
+    <View style={styles.container}>
+      <View style={styles.leftSide}>
         <HomeStatCard
           title={localise('CURRENT_ITEMS')}
           content={props.currentItems.toString()}
@@ -31,5 +31,15 @@ const HomeStats = (props: HomeStatsProps) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+  },
+  leftSide: {
+    height: 150, 
+    flex: 1
+  }
+})
 
 export default HomeStats;
