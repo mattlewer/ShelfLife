@@ -2,32 +2,51 @@ import React from 'react';
 import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
 import {StyleSheet, Text, View} from 'react-native';
 import {Typography} from '../../../../globalStyles/Typography';
-import InputField from '../../../modules/InputField';
 import * as Colors from '../../../../constants/colors';
-import ProductList from '../../../modules/ProductList';
-import CategoryList from '../../../modules/CategoryList';
-import Search from '../../../../assets/search.png'
+import HomeStats from '../../../modules/HomeStats';
+import ProductListRow from '../../../modules/ProductListRow';
+import {ScrollView} from 'react-native-gesture-handler';
+import { localise } from '../../../../services/lang/lang';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
 
   return (
     <View style={styles.pageContainer}>
-      <View style={styles.headerContainer}>
-        <Text style={Typography.HeaderFont}>Hi, Matt!</Text>
-        <Text style={Typography.BodyFont}>You have x items expiring today</Text>
-        <InputField value={''} onChange={() => {}} rightIcon={Search} />
-      </View>
-      <View style={styles.contentContainer}>
-        <Text style={Typography.SubHeaderFont}>Categories</Text>
-        <CategoryList
-          categories={viewModel.categories}
-          setSelectedCategory={viewModel.onSelectCategory}
-          selectedCategory={viewModel.selectedCategory}
-        />
-        <Text style={Typography.SubHeaderFont}>Products</Text>
-        <ProductList products={viewModel.products} />
-      </View>
+      <ScrollView>
+        <View style={styles.headerContainer}>
+          <Text style={Typography.HeaderFont}>Hi, Matt!</Text>
+          <Text style={Typography.BodyFont}>
+            You have x items expiring today
+          </Text>
+        </View>
+        <View style={styles.statContainer}>
+          <Text style={Typography.SubHeaderFont}>{localise('STATISTICS')}</Text>
+          <HomeStats
+            currentItems={viewModel.currentItems}
+            discardedItems={viewModel.discardedItems}
+            moneyWasted={viewModel.moneyWasted}
+          />
+        </View>
+        <View>
+          <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
+            {localise('USE_TODAY')}
+          </Text>
+          <ProductListRow
+            products={viewModel.products[0].items}
+            useBy={viewModel.products[0].useBy}
+          />
+        </View>
+        <View>
+          <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
+            {localise('USE_TOMORROW')}
+          </Text>
+          <ProductListRow
+            products={viewModel.products[1].items}
+            useBy={viewModel.products[1].useBy}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -39,11 +58,14 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 30,
   },
-  contentContainer: {
-    flex: 1,
-    alignItems: 'center',
+  statContainer: {
+    marginBottom: 30,
+    paddingHorizontal: 20,
   },
+  sectionHeaderList: {
+    paddingHorizontal: 20,
+  }
 });
 export default HomeScreen;

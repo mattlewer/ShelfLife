@@ -1,43 +1,15 @@
 import {useState} from 'react';
-import {Category} from '../../../interfaces/Category';
-
-import Meat from '../../../assets/meat.png';
-import Veg from '../../../assets/veg.png';
-import Fruit from '../../../assets/fruit.png';
-import Dairy from '../../../assets/dairy.png';
-import Juice from '../../../assets/juice.png';
-import Baked from '../../../assets/baked.png';
-import Snacks from '../../../assets/snacks.png';
 
 const useHomeScreenViewModel = () => {
-  const [selectedCategory, setSelectedCategory] = useState<undefined | Category>();
-
-  const onSelectCategory = (category: Category) => {
-    if(selectedCategory?.name === category.name){
-      setSelectedCategory(undefined);
-    }else{
-      setSelectedCategory(category);
-    }
-  };
-
-  const categories: Category[] = [
-    {name: 'Meat', uri: Meat},
-    {name: 'Veg', uri: Veg},
-    {name: 'Fruit', uri: Fruit},
-    {name: 'Dairy', uri: Dairy},
-    {name: 'Juice', uri: Juice},
-    {name: 'Baked', uri: Baked},
-    {name: 'Snacks', uri: Snacks},
-  ];
 
   const [products, setProducts] = useState([
     {
       useBy: 1673905293,
       items: [
         {id: 1, name: 'Apples', price: 2.50},
-        // {id: 2, name: 'Oranges', price: 2},
-        // {id: 3, name: 'Bread', price: 1},
-        // {id: 4, name: 'Lasagne', price: 3},
+        {id: 2, name: 'Apples', price: 2.50},
+        {id: 3, name: 'Apples', price: 2.50},
+        {id: 4, name: 'Apples', price: 2.50},
       ],
     },
     {
@@ -53,12 +25,17 @@ const useHomeScreenViewModel = () => {
     },
   ]);
 
+  const currentItems = 23;
+  const discardedItems = 12;
+  const moneyWasted =  23.20
+
 
   return {
-    selectedCategory,
-    onSelectCategory,
-    categories,
-    products
+    products,
+
+    currentItems,
+    discardedItems,
+    moneyWasted
   };
 };
 
