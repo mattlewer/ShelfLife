@@ -12,7 +12,8 @@
     
     "STATISTICS": "Statistics",
     "USE_TODAY": "Expires Today",
-    "USE_TOMORROW": "Expires Tomorrow"
+    "USE_TOMORROW": "Expires Tomorrow",
 
-
+    "CATEGORIES": "Categories",
+    "ITEMS": "Items"
 }

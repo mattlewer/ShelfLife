@@ -7,6 +7,7 @@ import useAllItemsViewModel from '../../../../services/viewModels/postLogin/useA
 import InputField from '../../../modules/InputField';
 import Search from '../../../../assets/search.png';
 import * as Colors from '../../../../constants/colors';
+import { localise } from '../../../../services/lang/lang';
 
 const AllItemsScreen = () => {
   const viewModel = useAllItemsViewModel();
@@ -15,15 +16,24 @@ const AllItemsScreen = () => {
     <View style={styles.pageContainer}>
       <View style={styles.contentContainer}>
         <InputField value={''} onChange={() => {}} rightIcon={Search} />
-
-        <Text style={Typography.SubHeaderFont}>Categories</Text>
-        <CategoryList
-          categories={viewModel.categories}
-          setSelectedCategory={viewModel.onSelectCategory}
-          selectedCategory={viewModel.selectedCategory}
-        />
-        <Text style={Typography.SubHeaderFont}>Items</Text>
-        <ProductList products={viewModel.products} />
+        <View>
+          <Text
+            style={[
+              Typography.SubHeaderFont,
+              {alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 20},
+            ]}>
+            {localise('CATEGORIES')}
+          </Text>
+          <CategoryList
+            categories={viewModel.categories}
+            setSelectedCategory={viewModel.onSelectCategory}
+            selectedCategory={viewModel.selectedCategory}
+          />
+        </View>
+        <View style={styles.listContainer}>
+          <Text style={Typography.SubHeaderFont}>{localise('ITEMS')}</Text>
+          <ProductList products={viewModel.products} />
+        </View>
       </View>
     </View>
   );
@@ -31,11 +41,19 @@ const AllItemsScreen = () => {
 
 const styles = StyleSheet.create({
   pageContainer: {
+    paddingBottom: 40,
     flex: 1,
     backgroundColor: Colors.White,
   },
   contentContainer: {
     flex: 1,
+    alignItems: 'center',
+  },
+  listContainer: {
+    paddingTop: 10,
+    backgroundColor: Colors.LightGrey,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
     alignItems: 'center',
   },
 });
