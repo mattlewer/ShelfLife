@@ -12,13 +12,37 @@ interface ProductItem {
   product: Product;
 }
 const ProductItem = (props: ProductItem) => {
+
+  let tabColor;
+  switch(props.product.category){
+    case 'meat':
+      tabColor = Colors.Meat;
+      break;
+    case 'veg':
+      tabColor = Colors.Veg;
+      break;
+    case 'fruit':
+      tabColor = Colors.Fruit;
+      break;
+    case 'dairy':
+      tabColor = Colors.Dairy;
+      break;
+    case 'juice':
+      tabColor = Colors.Juice;
+      break;
+    case 'baked':
+      tabColor = Colors.Baked;
+      break;
+    case 'snacks':
+      tabColor = Colors.Snacks;
+      break;
+  }
   return (
     <View style={styles.itemContainer}>
-      <View style={styles.imageContainer}></View>
       <Pressable style={styles.buttonContainer}>
         <Image style={styles.image} source={Continue} />
       </Pressable>
-      <View style={styles.productInfoContainer}>
+      <View style={[styles.productInfoContainer, {borderLeftColor: tabColor}]}>
         <View style={styles.headerDetails}>
           <Text style={Typography.SubHeaderFont}>{props.product.name}</Text>
           <Text style={Typography.BodyFont}>£{props.product.price}</Text>
@@ -39,22 +63,13 @@ const styles = StyleSheet.create({
 
   },
   productInfoContainer: {
-    backgroundColor: Colors.Secondary,
-    borderRadius: 20,
+    borderLeftWidth: 10,
+    paddingVertical: 15,
+    backgroundColor: Colors.White,
+    borderRadius: 9,
     width: Dimens.PRODUCT_ITEM_WIDTH,
     height: Dimens.PRODUCT_ITEM_HEIGHT,
-    justifyContent: 'center',
     elevation: 3,
-  },
-  imageContainer: {
-    backgroundColor: '#D9D9D9',
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    position: 'absolute',
-    top: 0,
-    left: -20,
-    zIndex: 100,
   },
   image: {
     height: 15,
@@ -65,9 +80,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.Primary,
-    width: 30,
-    height: 30,
-    borderRadius: 30,
+    width: 25,
+    height: 25,
+    borderRadius: 25,
     position: 'absolute',
     zIndex: 100,
     top: 27,
