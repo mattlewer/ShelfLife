@@ -1,10 +1,9 @@
-import { Category } from "./Category";
-
 export interface Product{
     id: number;
     name: string;
     price: number;
     categoryId: number;
+    useBy: number;
 }
 
 export interface ProductResponse{

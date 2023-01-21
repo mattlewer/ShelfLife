@@ -15,5 +15,7 @@
     "USE_TOMORROW": "Expires Tomorrow",
 
     "CATEGORIES": "Categories",
-    "ITEMS": "Items"
+    "ITEMS": "Items",
+
+    "NO_ITEMS": "You currently have no items added"
 }

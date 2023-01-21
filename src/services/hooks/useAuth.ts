@@ -75,6 +75,7 @@ const useAuth = () => {
     isLoggedIn,
     signOut,
     error,
+    authState,
     setError,
   };
 };

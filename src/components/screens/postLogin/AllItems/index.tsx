@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {filterItemsCategory} from '../../../../services/helpers/filterItems';
 import {Categories} from '../../../../constants/categories';
@@ -10,21 +10,31 @@ import ProductList from '../../../modules/ProductList';
 import InputField from '../../../modules/InputField';
 import Search from '../../../../assets/search.png';
 import * as Colors from '../../../../constants/colors';
+import TextButton from '../../../modules/TextButton';
+import {ProductResponse} from '../../../../interfaces/Product';
 
 const AllItemsScreen = () => {
   const viewModel = useAllItemsViewModel();
+  let itemsToRender: undefined | ProductResponse[];
 
-  let itemsToRender = viewModel.products;
-  if (viewModel.selectedCategory) {
-    itemsToRender = filterItemsCategory(
-      viewModel.products,
-      viewModel.selectedCategory,
-    );
-  }
+  useEffect(() => {
+    itemsToRender = viewModel.data;
+    if (viewModel.selectedCategory) {
+      itemsToRender = filterItemsCategory(
+        viewModel.data!,
+        viewModel.selectedCategory,
+      );
+    }
+  }, [viewModel.data]);
 
   return (
     <View style={styles.pageContainer}>
       <View style={styles.contentContainer}>
+        <TextButton
+          title={'Add'}
+          type={'Primary'}
+          onPress={viewModel.onAddProduct}
+        />
         <InputField value={''} onChange={() => {}} rightIcon={Search} />
         <View>
           <Text
@@ -42,7 +52,13 @@ const AllItemsScreen = () => {
         </View>
         <View style={styles.listContainer}>
           <Text style={Typography.SubHeaderFont}>{localise('ITEMS')}</Text>
-          <ProductList products={itemsToRender} />
+          {viewModel.data !== undefined ? (
+            <ProductList products={viewModel.data} />
+          ) : (
+            <Text style={{flex: 1, textAlignVertical: 'center'}}>
+              {localise('NO_ITEMS')}
+            </Text>
+          )}
         </View>
       </View>
     </View>
@@ -51,7 +67,6 @@ const AllItemsScreen = () => {
 
 const styles = StyleSheet.create({
   pageContainer: {
-    paddingBottom: 40,
     flex: 1,
     backgroundColor: Colors.White,
   },
@@ -65,6 +80,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
+    flex: 1,
   },
 });
 
