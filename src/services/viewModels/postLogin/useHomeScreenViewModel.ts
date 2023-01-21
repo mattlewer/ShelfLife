@@ -7,18 +7,18 @@ const useHomeScreenViewModel = () => {
     {
       useBy: 1673905293,
       items: [
-        {id: 1, name: 'Apples', price: 2.50, category: 'fruit'},
+        {id: 1, name: 'Apples', price: 2.50, categoryId: 3},
       ],
     },
     {
       useBy: 1673998093,
       items: [
-        {id: 5, name: 'Aaaaaa', price: 12.20, category: 'veg'},
-        {id: 6, name: 'Bbbbbb', price: 2.50, category: 'meat'},
-        {id: 7, name: 'Ccccc', price: 1, category: 'juice'},
-        {id: 8, name: 'Ddddddd', price: 6, category: 'dairy'},
-        {id: 9, name: 'Eeeeee', price: 1, category: 'snacks'},
-        {id: 10, name: 'Other', price: 2, category: 'baked'},
+        {id: 5, name: 'Aaaaaa', price: 12.20, categoryId: 2},
+        {id: 6, name: 'Bbbbbb', price: 2.50, categoryId: 1},
+        {id: 7, name: 'Ccccc', price: 1, categoryId: 5},
+        {id: 8, name: 'Ddddddd', price: 6, categoryId: 4},
+        {id: 9, name: 'Eeeeee', price: 1, categoryId: 7},
+        {id: 10, name: 'Other', price: 2, categoryId: 6},
       ]
     },
   ]);

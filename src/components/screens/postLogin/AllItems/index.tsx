@@ -1,16 +1,26 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {filterItemsCategory} from '../../../../services/helpers/filterItems';
+import {Categories} from '../../../../constants/categories';
 import {Typography} from '../../../../globalStyles/Typography';
+import {localise} from '../../../../services/lang/lang';
+import useAllItemsViewModel from '../../../../services/viewModels/postLogin/useAllItemsViewModel';
 import CategoryList from '../../../modules/CategoryList';
 import ProductList from '../../../modules/ProductList';
-import useAllItemsViewModel from '../../../../services/viewModels/postLogin/useAllItemsViewModel';
 import InputField from '../../../modules/InputField';
 import Search from '../../../../assets/search.png';
 import * as Colors from '../../../../constants/colors';
-import { localise } from '../../../../services/lang/lang';
 
 const AllItemsScreen = () => {
   const viewModel = useAllItemsViewModel();
+
+  let itemsToRender = viewModel.products;
+  if (viewModel.selectedCategory) {
+    itemsToRender = filterItemsCategory(
+      viewModel.products,
+      viewModel.selectedCategory,
+    );
+  }
 
   return (
     <View style={styles.pageContainer}>
@@ -25,14 +35,14 @@ const AllItemsScreen = () => {
             {localise('CATEGORIES')}
           </Text>
           <CategoryList
-            categories={viewModel.categories}
+            categories={Categories}
             setSelectedCategory={viewModel.onSelectCategory}
             selectedCategory={viewModel.selectedCategory}
           />
         </View>
         <View style={styles.listContainer}>
           <Text style={Typography.SubHeaderFont}>{localise('ITEMS')}</Text>
-          <ProductList products={viewModel.products} />
+          <ProductList products={itemsToRender} />
         </View>
       </View>
     </View>

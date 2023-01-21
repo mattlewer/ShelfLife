@@ -1,42 +1,19 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
+import {epochToDateString} from '../../../services/helpers/epochToDateString';
+import {Categories} from '../../../constants/categories';
 import {Product} from '../../../interfaces/Product';
 import {Typography} from '../../../globalStyles/Typography';
 import * as Colors from '../../../constants/colors';
 import * as Dimens from '../../../constants/dimens';
 import Continue from '../../../assets/continue.png';
-import { epochToDateString } from '../../../services/helpers/epochToDateString';
 
-interface ProductItem {
+interface ProductItemProps {
   useBy: number;
   product: Product;
 }
-const ProductItem = (props: ProductItem) => {
-
-  let tabColor;
-  switch(props.product.category){
-    case 'meat':
-      tabColor = Colors.Meat;
-      break;
-    case 'veg':
-      tabColor = Colors.Veg;
-      break;
-    case 'fruit':
-      tabColor = Colors.Fruit;
-      break;
-    case 'dairy':
-      tabColor = Colors.Dairy;
-      break;
-    case 'juice':
-      tabColor = Colors.Juice;
-      break;
-    case 'baked':
-      tabColor = Colors.Baked;
-      break;
-    case 'snacks':
-      tabColor = Colors.Snacks;
-      break;
-  }
+const ProductItem = (props: ProductItemProps) => {
+  let tabColor = Categories.find(x => x.id === props.product.categoryId)?.color;
   return (
     <View style={styles.itemContainer}>
       <Pressable style={styles.buttonContainer}>
@@ -60,7 +37,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     height: 120,
     marginBottom: 50,
-
   },
   productInfoContainer: {
     borderLeftWidth: 10,
