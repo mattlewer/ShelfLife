@@ -20,7 +20,7 @@ const CategoryItem = (props: CategoryItemProps) => {
             styles.iconContainer,
             {
               backgroundColor: props.isSelected
-                ? Colors.Primary
+                ? props.category.color
                 : Colors.Secondary,
             },
           ]}>

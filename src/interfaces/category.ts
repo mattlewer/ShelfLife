@@ -1,4 +1,6 @@
 export interface Category{
-    name: string,
+    id: number;
+    name: 'meat' | 'veg' | 'fruit' | 'dairy' | 'juice' | 'baked' | 'snacks',
+    color: string;
     uri: HTMLImageElement,
 }

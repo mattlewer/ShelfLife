@@ -2,11 +2,12 @@ import React from 'react';
 import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
 import {StyleSheet, Text, View} from 'react-native';
 import {Typography} from '../../../../globalStyles/Typography';
+import {ScrollView} from 'react-native-gesture-handler';
+import {localise} from '../../../../services/lang/lang';
 import * as Colors from '../../../../constants/colors';
 import HomeStats from '../../../modules/HomeStats';
 import ProductListRow from '../../../modules/ProductListRow';
-import {ScrollView} from 'react-native-gesture-handler';
-import {localise} from '../../../../services/lang/lang';
+
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
