@@ -20,6 +20,7 @@ const CategoryList = (props: CategoryListProps) => {
         data={props.categories}
         renderItem={({item}) => (
           <CategoryItem
+            key={item.name}
             category={item}
             isSelected={props.selectedCategory?.name === item.name}
             onSelect={props.setSelectedCategory}

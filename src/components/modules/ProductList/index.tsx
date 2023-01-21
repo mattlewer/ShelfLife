@@ -16,7 +16,7 @@ const ProductList = (props: ProductListProps) => {
       style={styles.flatList}
       data={props.products}
       renderItem={({item, index}) => (
-        <>
+        <View key={index}>
           <View style={styles.dateSectionHeader}>
             <Text style={Typography.ListDateHeader}>
               {epochToDateString(item.useBy)}
@@ -28,16 +28,21 @@ const ProductList = (props: ProductListProps) => {
             </Text>
           </View>
           <View style={styles.productContainer}>
-            {item.items.map(product => {
+            {item.items.map((product, index) => {
               return (
-                  <ProductItem useBy={item.useBy} product={product} />
+                <ProductItem key={index} useBy={item.useBy} product={product} />
               );
             })}
             {item.items.length % 2 !== 0 ? (
-              <View style={{width: Dimens.PRODUCT_ITEM_WIDTH}} />
+              <View
+                style={{
+                  width: Dimens.PRODUCT_ITEM_WIDTH,
+                  height: Dimens.PRODUCT_ITEM_HEIGHT,
+                }}
+              />
             ) : null}
           </View>
-        </>
+        </View>
       )}></FlatList>
   );
 };
@@ -45,8 +50,7 @@ const ProductList = (props: ProductListProps) => {
 const styles = StyleSheet.create({
   flatList: {
     width: '100%',
-    flexGrow: 1,
-    marginTop: 10,
+    flex: 1,
   },
   dateSectionHeader: {
     height: 40,

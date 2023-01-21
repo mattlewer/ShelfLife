@@ -65,3 +65,4 @@ buck-out/
 
 # Firebase Creds
 android/app/google-services.json
+hiddenVariables.ts
