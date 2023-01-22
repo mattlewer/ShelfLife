@@ -3,6 +3,7 @@ import {Category} from '../../../interfaces/Category';
 import useDatabase from '../../hooks/useDatabase';
 import {useRecoilValue} from 'recoil';
 import {productState} from '../../../state/products';
+import { Product } from '../../../interfaces/Product';
 
 const useAllItemsViewModel = () => {
   const database = useDatabase();
@@ -12,10 +13,17 @@ const useAllItemsViewModel = () => {
     database.storeProduct({
       id: Math.floor(Math.random() * 100) + 1,
       name: 'Apples',
-      price: 2.3,
+      price: Math.floor(Math.random() * 100) + 1,
       categoryId: 3,
       useBy: 1674310405,
     });
+  };
+
+  const onRemoveProduct = (product: Product) => {
+    const timer = setTimeout(() => {
+      database.deleteProduct(product);
+    }, 500);
+    return () => clearTimeout(timer);
   };
 
   const [selectedCategory, setSelectedCategory] = useState<
@@ -34,6 +42,7 @@ const useAllItemsViewModel = () => {
     selectedCategory,
     onSelectCategory,
     onAddProduct,
+    onRemoveProduct,
     data,
   };
 };

@@ -57,24 +57,30 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    backgroundColor: Colors.White,
+    backgroundColor: Colors.Background,
   },
   headerContainer: {
+    backgroundColor: Colors.LightGrey,
     paddingHorizontal: 20,
-    paddingVertical: 30,
+    justifyContent: 'flex-end',
+    paddingTop:30,
+    paddingBottom: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   statContainer: {
+    paddingTop:20,
     marginBottom: 30,
     paddingHorizontal: 20,
   },
   listContainerToday: {
-    backgroundColor: '#FFE0E0',
+    backgroundColor: Colors.OnBackground,
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingTop: 10,
   },
   listContainerTomorrow: {
-    backgroundColor: '#FFE3B9',
+    backgroundColor: Colors.OnBackground,
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingTop: 10,

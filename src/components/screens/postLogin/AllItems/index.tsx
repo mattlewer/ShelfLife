@@ -1,47 +1,50 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {filterItemsCategory} from '../../../../services/helpers/filterItems';
-import {Categories} from '../../../../constants/categories';
 import {Typography} from '../../../../globalStyles/Typography';
 import {localise} from '../../../../services/lang/lang';
 import useAllItemsViewModel from '../../../../services/viewModels/postLogin/useAllItemsViewModel';
-import CategoryList from '../../../modules/CategoryList';
 import ProductList from '../../../modules/ProductList';
-import InputField from '../../../modules/InputField';
-import Search from '../../../../assets/search.png';
 import * as Colors from '../../../../constants/colors';
-import TextButton from '../../../modules/TextButton';
 import {ProductResponse} from '../../../../interfaces/Product';
+import TextButton from '../../../modules/TextButton';
 
 const AllItemsScreen = () => {
   const viewModel = useAllItemsViewModel();
-  let itemsToRender: undefined | ProductResponse[];
+  const [itemsToRender, setItemsToRender] = useState<
+    undefined | ProductResponse[]
+  >();
 
   useEffect(() => {
-    itemsToRender = viewModel.data;
+    setItemsToRender(viewModel.data);
     if (viewModel.selectedCategory) {
-      itemsToRender = filterItemsCategory(
-        viewModel.data!,
-        viewModel.selectedCategory,
+      setItemsToRender(
+        filterItemsCategory(viewModel.data!, viewModel.selectedCategory),
       );
     }
-  }, [viewModel.data]);
+  }, [viewModel.data, viewModel.selectedCategory]);
 
   return (
     <View style={styles.pageContainer}>
+      <TextButton onPress={viewModel.onAddProduct} type={'Primary'} title={'add one'}/>
       <View style={styles.contentContainer}>
-        <TextButton
-          title={'Add'}
-          type={'Primary'}
-          onPress={viewModel.onAddProduct}
-        />
-        <InputField value={''} onChange={() => {}} rightIcon={Search} />
-        <View>
-          <Text
-            style={[
-              Typography.SubHeaderFont,
-              {alignSelf: 'flex-start', paddingLeft: 20, paddingTop: 20},
-            ]}>
+        <View style={styles.headerContainer}>
+          <Text style={Typography.HeaderFont}>All Items</Text>
+          <Text style={Typography.BodyFont}>
+            You have a total of x items
+          </Text>
+        </View>
+        <View style={styles.listContainer}>
+          {itemsToRender ? (
+            <ProductList products={itemsToRender} onRemove={viewModel.onRemoveProduct}/>
+          ) : (
+            <Text style={{flex: 1, textAlignVertical: 'center'}}>
+              {localise('NO_ITEMS')}
+            </Text>
+          )}
+        </View>
+        {/* <View style={styles.filterSearchSection}>
+          <Text style={[Typography.SubHeaderFont, styles.categoriesText]}>
             {localise('CATEGORIES')}
           </Text>
           <CategoryList
@@ -49,36 +52,51 @@ const AllItemsScreen = () => {
             setSelectedCategory={viewModel.onSelectCategory}
             selectedCategory={viewModel.selectedCategory}
           />
-        </View>
-        <View style={styles.listContainer}>
-          <Text style={Typography.SubHeaderFont}>{localise('ITEMS')}</Text>
-          {viewModel.data !== undefined ? (
-            <ProductList products={viewModel.data} />
-          ) : (
-            <Text style={{flex: 1, textAlignVertical: 'center'}}>
-              {localise('NO_ITEMS')}
-            </Text>
-          )}
-        </View>
+          <View style={styles.inputWrapper}>
+            <InputField value={''} onChange={() => {}} rightIcon={Search} />
+          </View>
+        </View> */}
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    width:'100%',
+    backgroundColor: Colors.LightGrey,
+    paddingHorizontal: 20,
+    justifyContent: 'flex-end',
+    paddingTop: 30,
+    paddingBottom: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
   pageContainer: {
     flex: 1,
-    backgroundColor: Colors.White,
+    backgroundColor: Colors.Background,
   },
   contentContainer: {
     flex: 1,
     alignItems: 'center',
   },
-  listContainer: {
-    paddingTop: 10,
+  filterSearchSection: {
+    width: '100%',
+    alignItems: 'center',
     backgroundColor: Colors.LightGrey,
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+  },
+  inputWrapper: {
+    marginTop: -10,
+    width: '90%',
+  },
+  categoriesText: {
+    alignSelf: 'flex-start',
+    paddingLeft: 20,
+    paddingTop: 20,
+  },
+  listContainer: {
     alignItems: 'center',
     justifyContent: 'flex-start',
     width: '100%',

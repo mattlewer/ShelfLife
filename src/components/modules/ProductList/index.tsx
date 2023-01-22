@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
-import {ProductResponse} from '../../../interfaces/Product';
+import {Product, ProductResponse} from '../../../interfaces/Product';
 import {Typography} from '../../../globalStyles/Typography';
 import ProductItem from '../ProductItem';
 import {epochToDateString} from '../../../services/helpers/epochToDateString';
@@ -9,6 +9,7 @@ import {localise} from '../../../services/lang/lang';
 
 interface ProductListProps {
   products: ProductResponse[];
+  onRemove: (product: Product) => void;
 }
 const ProductList = (props: ProductListProps) => {
   return (
@@ -30,7 +31,7 @@ const ProductList = (props: ProductListProps) => {
           <View style={styles.productContainer}>
             {item.items.map((product, index) => {
               return (
-                <ProductItem key={index} useBy={item.useBy} product={product} />
+                <ProductItem key={product.id} useBy={item.useBy} product={product} onRemove={props.onRemove}/>
               );
             })}
             {item.items.length % 2 !== 0 ? (

@@ -27,14 +27,16 @@ const InputField = (props: InputFieldProps) => {
 const styles = StyleSheet.create({
   inputFieldContainer: {
     position: 'relative',
-    width: '90%',
+    width: '100%',
   },
   inputField: {
-    backgroundColor: Colors.Secondary, 
+    backgroundColor: Colors.White, 
     borderRadius: 12,
     marginBottom: 10,
     paddingRight: 50,
     paddingLeft: 15,
+    borderColor: Colors.BorderGrey,
+    borderWidth: 1,
   },
   inputIcon: {
     position: 'absolute',
