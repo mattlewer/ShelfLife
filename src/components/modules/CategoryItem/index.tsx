@@ -21,7 +21,9 @@ const CategoryItem = (props: CategoryItemProps) => {
             {
               backgroundColor: props.isSelected
                 ? props.category.color
-                : Colors.Secondary,
+                : Colors.White,
+              borderColor: Colors.BorderGrey,
+              borderWidth: props.isSelected ? 0 : 1,
             },
           ]}>
           <Image style={styles.categoryIcon} source={props.category.uri}/>

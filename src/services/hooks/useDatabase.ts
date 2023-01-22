@@ -25,15 +25,14 @@ const useDatabase = () => {
 
   const getProducts = () => {
     setIsLoading(true);
-    console.log(ITEM_PATH);
     database.ref(ITEM_PATH).on('value', snapshot => {
       try {
         if (snapshot.val()) {
-          console.log(snapshot.val());
           let arr: ProductResponse[] = [];
           for (const [key, value] of Object.entries(snapshot.val())) {
             const temp = {useBy: parseInt(key), items: []};
             for (let [key2, value2] of Object.entries(value)) {
+              value2['id'] = key2
               temp['items'].push(value2);
             }
             arr.push(temp);

@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import {Product} from '../../../interfaces/Product';
 import ProductItem from '../ProductItem';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface ProductListRowProps {
   useBy: number;
   products: Product[];
+  onRemove: (product: Product) => void;
 }
 
 const ProductListRow = (props: ProductListRowProps) => {
@@ -15,11 +15,10 @@ const ProductListRow = (props: ProductListRowProps) => {
       horizontal
       style={styles.flatList}
       data={props.products}
-      ListHeaderComponent={() => <View style={{padding: 5}} />}
       ListFooterComponent={() => <View style={{padding: 5}} />}
       renderItem={({item, index}) => (
-        <View style={{paddingHorizontal: 20}}>
-          <ProductItem useBy={props.useBy} product={item} />
+        <View style={{paddingHorizontal: 10}}>
+          <ProductItem useBy={props.useBy} product={item} onRemove={props.onRemove}/>
         </View>
       )}></FlatList>
   );
@@ -28,7 +27,7 @@ const ProductListRow = (props: ProductListRowProps) => {
 const styles = StyleSheet.create({
   flatList: {
     flexGrow: 0.9,
-    marginTop: 10,
+    marginTop: 0,
   },
 });
 
