@@ -6,7 +6,6 @@ import * as Colors from '../../../constants/colors';
 interface HomeStatCardProps{
     title: string;
     content: string;
-    type: 'positive' | 'negative' | 'data';
 }
 const HomeStatCard = (props: HomeStatCardProps) => {
     return (

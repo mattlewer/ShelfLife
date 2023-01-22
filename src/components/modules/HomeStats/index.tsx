@@ -15,18 +15,15 @@ const HomeStats = (props: HomeStatsProps) => {
         <HomeStatCard
           title={localise('CURRENT_ITEMS')}
           content={props.currentItems.toString()}
-          type={'positive'}
         />
         <HomeStatCard
           title={localise('ITEMS_DISCARDED')}
           content={props.discardedItems.toString()}
-          type={'negative'}
         />
       </View>
       <HomeStatCard
         title={localise('MONEY_WASTED')}
         content={'£' + props.moneyWasted.toString()}
-        type={'data'}
       />
     </View>
   );
@@ -37,9 +34,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   leftSide: {
-    height: 150, 
-    flex: 1
-  }
-})
+    height: 150,
+    flex: 1,
+  },
+});
 
 export default HomeStats;
