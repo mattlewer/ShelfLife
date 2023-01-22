@@ -1,5 +1,4 @@
 import React from 'react';
-import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
 import {StyleSheet, Text, View} from 'react-native';
 import {Typography} from '../../../../globalStyles/Typography';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -8,10 +7,10 @@ import * as Colors from '../../../../constants/colors';
 import HomeStats from '../../../modules/HomeStats';
 import ProductListRow from '../../../modules/ProductListRow';
 
+import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
 
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
-
   return (
     <View style={styles.pageContainer}>
       <ScrollView>
@@ -29,26 +28,16 @@ const HomeScreen = () => {
             moneyWasted={viewModel.moneyWasted}
           />
         </View>
-        <View
-          style={styles.listContainerToday}>
-          <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
-            {localise('USE_TODAY')}
-          </Text>
-          <ProductListRow
-            products={viewModel.products[0].items}
-            useBy={viewModel.products[0].useBy}
-          />
-        </View>
-        <View
-          style={styles.listContainerTomorrow}>
-          <Text style={[Typography.SubHeaderFont, styles.sectionHeaderList]}>
-            {localise('USE_TOMORROW')}
-          </Text>
-          <ProductListRow
-            products={viewModel.products[1].items}
-            useBy={viewModel.products[1].useBy}
-          />
-        </View>
+        <ProductListRow
+          onRemove={viewModel.onRemoveProduct}
+          products={viewModel.expiresToday}
+          title={localise('USE_TODAY')}
+        />
+        <ProductListRow
+          title={localise('USE_TOMORROW')}
+          onRemove={viewModel.onRemoveProduct}
+          products={viewModel.expiresTomorrow}
+        />
       </ScrollView>
     </View>
   );
@@ -63,28 +52,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.LightGrey,
     paddingHorizontal: 20,
     justifyContent: 'flex-end',
-    paddingTop:30,
+    paddingTop: 30,
     paddingBottom: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
   statContainer: {
-    paddingTop:20,
+    paddingTop: 20,
     marginBottom: 30,
     paddingHorizontal: 20,
-  },
-  listContainerToday: {
-    backgroundColor: Colors.OnBackground,
-    borderTopLeftRadius: 20,
-    borderBottomLeftRadius: 20,
-    paddingTop: 10,
-  },
-  listContainerTomorrow: {
-    backgroundColor: Colors.OnBackground,
-    borderTopLeftRadius: 20,
-    borderBottomLeftRadius: 20,
-    paddingTop: 10,
-    marginTop: 10,
   },
   sectionHeaderList: {
     paddingHorizontal: 20,

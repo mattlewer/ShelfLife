@@ -5,8 +5,6 @@ import {Product} from '../../../interfaces/Product';
 import {Typography} from '../../../globalStyles/Typography';
 import * as Colors from '../../../constants/colors';
 import * as Dimens from '../../../constants/dimens';
-import Continue from '../../../assets/continue.png';
-import GreyCircle from '../../../assets/grey_circle.png';
 import Tick from '../../../assets/tick.png';
 
 interface ProductItemProps {
@@ -36,9 +34,6 @@ const ProductItem = (props: ProductItemProps) => {
           <Text style={Typography.SubHeaderFont}>{props.product.name}</Text>
           <Text style={Typography.BodyFont}>£{props.product.price}</Text>
         </View>
-        {/* <View style={styles.dateContainer}>
-          <Text style={Typography.Error}>{epochToDateString(props.useBy)}</Text>
-        </View> */}
       </View>
     </View>
   );
@@ -48,7 +43,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     paddingTop: 20,
     height: 120,
-    marginBottom: 50,
+    marginBottom: 25,
   },
   productInfoContainer: {
     borderLeftWidth: 10,
@@ -78,12 +73,6 @@ const styles = StyleSheet.create({
   },
   headerDetails: {
     paddingHorizontal: 15,
-  },
-  dateContainer: {
-    width: '100%',
-    position: 'absolute',
-    bottom: 5,
-    alignItems: 'center',
   },
 });
 

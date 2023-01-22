@@ -9,7 +9,6 @@ interface TextButtonProps {
 }
 
 const TextButton = (props: TextButtonProps) => {
-
   let containerStyle;
   let textStyle;
   switch (props.type){

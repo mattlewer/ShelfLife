@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import useLandingScreenViewModel from '../../../../services/viewModels/preLogin/useLandingScreenViewModel';
+import {localise} from '../../../../services/lang/lang';
 import InputField from '../../../modules/InputField';
 import TextButton from '../../../modules/TextButton';
 import ErrorMessage from '../../../modules/ErrorMessage';
-import {localise} from '../../../../services/lang/lang';
+
+import useLandingScreenViewModel from '../../../../services/viewModels/preLogin/useLandingScreenViewModel';
 
 const LandingPage = () => {
   const viewModel = useLandingScreenViewModel();
@@ -17,6 +18,7 @@ const LandingPage = () => {
           onChange={e => viewModel.onEmailChange(e)}
         />
         <InputField
+          secureTextEntry
           label={localise('PASSWORD')}
           value={viewModel.password}
           onChange={e => viewModel.onPasswordChange(e)}
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
   textFieldContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
 
 export default LandingPage;
