@@ -5,6 +5,7 @@ import * as Colors from '../../../constants/colors';
 
 interface InputFieldProps {
   label?: string;
+  secureTextEntry?: boolean;
   value: string | undefined;
   onChange: (e:string) => void;
   rightIcon?: HTMLImageElement;
@@ -15,6 +16,7 @@ const InputField = (props: InputFieldProps) => {
     <View style={styles.inputFieldContainer}>
       <Text style={Typography.BodyFont}>{props.label}</Text>
       <TextInput
+        secureTextEntry={props.secureTextEntry}
         style={[styles.inputField, Typography.BodyFont]}
         value={props.value}
         onChangeText={props.onChange}

@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import {Category} from '../../../interfaces/Category';
-import useDatabase from '../../hooks/useDatabase';
 import {useRecoilValue} from 'recoil';
 import {productState} from '../../../state/products';
-import { Product } from '../../../interfaces/Product';
+import {Product} from '../../../interfaces/Product';
+import useDatabase from '../../hooks/useDatabase';
 
 const useAllItemsViewModel = () => {
   const database = useDatabase();

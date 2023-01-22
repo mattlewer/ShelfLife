@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {filterItemsCategory} from '../../../../services/helpers/filterItems';
+import {ProductResponse} from '../../../../interfaces/Product';
 import {Typography} from '../../../../globalStyles/Typography';
 import {localise} from '../../../../services/lang/lang';
-import useAllItemsViewModel from '../../../../services/viewModels/postLogin/useAllItemsViewModel';
 import ProductList from '../../../modules/ProductList';
-import * as Colors from '../../../../constants/colors';
-import {ProductResponse} from '../../../../interfaces/Product';
 import TextButton from '../../../modules/TextButton';
+import * as Colors from '../../../../constants/colors';
+
+import useAllItemsViewModel from '../../../../services/viewModels/postLogin/useAllItemsViewModel';
 
 const AllItemsScreen = () => {
   const viewModel = useAllItemsViewModel();

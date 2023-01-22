@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     paddingTop: 10,
-    minHeight: 180,
+    minHeight: 200,
     marginBottom: 10,
   },
   flatList: {
-    flexGrow: 0.9,
+    flexGrow: 1,
     marginTop: 0,
   },
   noItemsTextContainer: {

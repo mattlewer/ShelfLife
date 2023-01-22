@@ -1,5 +1,4 @@
 import React from 'react';
-import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
 import {StyleSheet, Text, View} from 'react-native';
 import {Typography} from '../../../../globalStyles/Typography';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -8,9 +7,10 @@ import * as Colors from '../../../../constants/colors';
 import HomeStats from '../../../modules/HomeStats';
 import ProductListRow from '../../../modules/ProductListRow';
 
+import useHomeScreenViewModel from '../../../../services/viewModels/postLogin/useHomeScreenViewModel';
+
 const HomeScreen = () => {
   const viewModel = useHomeScreenViewModel();
-
   return (
     <View style={styles.pageContainer}>
       <ScrollView>
