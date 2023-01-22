@@ -5,8 +5,6 @@ import {Product} from '../../../interfaces/Product';
 import {Typography} from '../../../globalStyles/Typography';
 import * as Colors from '../../../constants/colors';
 import * as Dimens from '../../../constants/dimens';
-import Continue from '../../../assets/continue.png';
-import GreyCircle from '../../../assets/grey_circle.png';
 import Tick from '../../../assets/tick.png';
 
 interface ProductItemProps {

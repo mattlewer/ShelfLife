@@ -37,6 +37,7 @@ const useDatabase = () => {
             }
             arr.push(temp);
           }
+          arr.sort((a, b) => a.useBy < b.useBy ? -1 : 1)
           setData(arr);
         } else {
           setData([]);

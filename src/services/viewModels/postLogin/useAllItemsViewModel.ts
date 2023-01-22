@@ -15,7 +15,7 @@ const useAllItemsViewModel = () => {
       name: 'Apples',
       price: Math.floor(Math.random() * 100) + 1,
       categoryId: 3,
-      useBy: 1674310405,
+      useBy: 1674404188,
     });
   };
 

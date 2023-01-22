@@ -1,34 +1,64 @@
-import {useState} from 'react';
-import {ProductResponse} from '../../../interfaces/Product';
+import {useEffect, useState} from 'react';
+import {Product, ProductResponse} from '../../../interfaces/Product';
+import {useRecoilValue} from 'recoil';
+import {productState} from '../../../state/products';
+import useDatabase from '../../hooks/useDatabase';
+import {epochToDateString} from '../../helpers/epochToDateString';
 
 const useHomeScreenViewModel = () => {
-  const [products, setProducts] = useState<ProductResponse[]>([
-    {
-      useBy: 1673905293,
-      items: [
-        {id: 1, name: 'Apples', price: 2.5, categoryId: 3, useBy: 1674310405},
-      ],
-    },
-    {
-      useBy: 1673998093,
-      items: [
-        {id: 5, name: 'Aaaaaa', price: 12.2, categoryId: 2, useBy: 1674310405},
-        {id: 6, name: 'Bbbbbb', price: 2.5, categoryId: 1, useBy: 1674310405},
-        {id: 7, name: 'Ccccc', price: 1, categoryId: 5, useBy: 1674310405},
-        {id: 8, name: 'Ddddddd', price: 6, categoryId: 4, useBy: 1674310405},
-        {id: 9, name: 'Eeeeee', price: 1, categoryId: 7, useBy: 1674310405},
-        {id: 10, name: 'Other', price: 2, categoryId: 6, useBy: 1674310405},
-      ],
-    },
-  ]);
+  const database = useDatabase();
+  const data = useRecoilValue(productState);
+
+  const [expiresToday, setExpiresToday] = useState<
+    undefined | ProductResponse
+  >();
+  const [expiresTomorrow, setExpiresTomorrow] = useState<
+    undefined | ProductResponse
+  >();
+
+  const onRemoveProduct = (product: Product) => {
+    const timer = setTimeout(() => {
+      database.deleteProduct(product);
+    }, 500);
+    return () => clearTimeout(timer);
+  };
+
+  useEffect(() => {
+    if (data) {
+      if (data[0]) {
+        if (
+          epochToDateString(data[0].useBy) ===
+          epochToDateString(Date.now() / 1000)
+        ) {
+          setExpiresToday(data[0]);
+        }
+      } else {
+        setExpiresToday(undefined);
+      }
+      if (data[1]) {
+        if (
+          epochToDateString(data[1].useBy) ===
+          epochToDateString(Date.now() / 1000)
+        ) {
+          setExpiresTomorrow(data[1]);
+        }
+      } else {
+        setExpiresTomorrow(undefined);
+      }
+    } else {
+      setExpiresToday(undefined);
+      setExpiresTomorrow(undefined);
+    }
+  }, [data]);
 
   const currentItems = 23;
   const discardedItems = 12;
   const moneyWasted = 23.2;
 
   return {
-    products,
-
+    expiresToday,
+    expiresTomorrow,
+    onRemoveProduct,
     currentItems,
     discardedItems,
     moneyWasted,
