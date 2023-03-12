@@ -7,6 +7,7 @@ import PreLoginNavigation from './navigation/preLoginNav';
 
 import HomeNavigator from './navigation/postLoginNav/HomeStack';
 import AllItemsNavigator from './navigation/postLoginNav/AllItemsStack';
+import AddItemsNavigator from './navigation/postLoginNav/AddItemsStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,7 @@ const Router = () => {
           }}>
           <Tab.Screen component={HomeNavigator} name="Home" />
           <Tab.Screen component={AllItemsNavigator} name="All Items" />
+          <Tab.Screen component={AddItemsNavigator} name="Add Items" />
         </Tab.Navigator>
       ) : (
         <PreLoginNavigation />
