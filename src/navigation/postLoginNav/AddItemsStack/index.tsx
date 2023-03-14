@@ -3,17 +3,20 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import AddItems from '../../../components/screens/postLogin/AddItems';
+
+import RecordScreen from '../../../components/screens/postLogin/Record';
+import Playback from '../../../components/screens/postLogin/Playback';
 
 export type AddItemsParams = {
-    AddItems: undefined;
+  Record: undefined;
+  Playback: {uri: string};
 };
 const AddItemsStack = createStackNavigator<AddItemsParams>();
 
 const AddItemsNavigator = () => {
   return (
     <AddItemsStack.Navigator
-      initialRouteName="AddItems"
+      initialRouteName="Record"
       screenOptions={{
         headerTitleAlign: 'center',
         headerBackTitleVisible: false,
@@ -21,8 +24,13 @@ const AddItemsNavigator = () => {
       }}>
       <AddItemsStack.Screen
         options={{headerShown: false}}
-        name="AddItems"
-        component={AddItems}
+        name="Record"
+        component={RecordScreen}
+      />
+      <AddItemsStack.Screen
+        options={{headerShown: false}}
+        name="Playback"
+        component={Playback}
       />
     </AddItemsStack.Navigator>
   );

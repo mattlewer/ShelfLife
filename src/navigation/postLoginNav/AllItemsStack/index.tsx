@@ -6,7 +6,7 @@ import {
 import AllItems from '../../../components/screens/postLogin/AllItems';
 
 export type AllItemsParams = {
-    AllItems: undefined;
+  AllItems: undefined;
 };
 const AllItemsStack = createStackNavigator<AllItemsParams>();
 
@@ -19,6 +19,7 @@ const AllItemsNavigator = () => {
         headerBackTitleVisible: false,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
+
       <AllItemsStack.Screen
         options={{headerShown: false}}
         name="AllItems"

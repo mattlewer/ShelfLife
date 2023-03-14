@@ -2,9 +2,10 @@ import React from 'react';
 import {View, Button, StyleSheet, Text} from 'react-native';
 import {Slider} from '@miblanchard/react-native-slider';
 import useAudioPlaybackViewModel from './useAudioPlaybackViewModel';
+import {millisToTimeString} from '../../../services/helpers/millisToTimeString';
 
-interface AuioPlaybackProps{
-    audioUri: string;
+interface AuioPlaybackProps {
+  audioUri: string;
 }
 const AudioPlayback = (props: AuioPlaybackProps) => {
   const viewModel = useAudioPlaybackViewModel(props.audioUri);
@@ -27,8 +28,8 @@ const AudioPlayback = (props: AuioPlaybackProps) => {
         }}
       />
       <View style={style.timeText}>
-        <Text>{viewModel.millisToTimeString(viewModel.position)}</Text>
-        <Text>{viewModel.millisToTimeString(viewModel.duration)}</Text>
+        <Text>{millisToTimeString(viewModel.position)}</Text>
+        <Text>{millisToTimeString(viewModel.duration)}</Text>
       </View>
       <Button
         title={viewModel.isPlaying ? 'PAUSE' : 'PLAY'}
@@ -42,6 +43,7 @@ const style = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    flex:1,
   },
   trackstyle: {
     height: 10,
@@ -53,10 +55,11 @@ const style = StyleSheet.create({
     borderColor: '#C23400',
     borderWidth: 4,
   },
-  timeText:{
-      width: '100%',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-  }
+  timeText: {
+    fontSize: 18,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 export default AudioPlayback;

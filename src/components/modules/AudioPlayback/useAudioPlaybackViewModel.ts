@@ -59,10 +59,6 @@ const useAudioPlaybackViewModel = (audioUri: string) => {
     }
   };
 
-  const millisToTimeString = (millis: number) => {
-    return new Date(millis).toISOString().slice(14, 19);
-  };
-
   return {
     position,
     duration,
@@ -70,7 +66,6 @@ const useAudioPlaybackViewModel = (audioUri: string) => {
     isPlaying,
     onPlay,
     onPause,
-    millisToTimeString,
   };
 };
 
